@@ -12,6 +12,11 @@ cask "sshvault" do
 
   app "SSHVault.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/SSHVault.app"]
+  end
+
   zap trash: [
     "~/Library/Application Support/SSHVault",
   ]
